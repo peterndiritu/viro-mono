@@ -1,0 +1,17 @@
+{
+  "name": "viro-monorepo",
+  "private": true,
+  "workspaces": [
+    "app",
+    "contracts"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:chain\" \"npm:dev:app\"",
+    "dev:chain": "cd contracts && npx hardhat node",
+    "dev:app": "cd app && npm run dev",
+    "deploy:local": "cd contracts && npx hardhat run scripts/deploy.ts --network localhost"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2"
+  }
+}
